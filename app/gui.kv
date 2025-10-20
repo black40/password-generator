@@ -1,0 +1,88 @@
+<Root>:
+    orientation: 'vertical'
+
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.4
+        Rectangle:
+            source: 'app/images/background.jpeg'  # Ensure this path is correct and the image exists
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            orientation: 'horizontal'
+            CheckBox:
+                id: letters
+                active: True
+            Label:
+                text: 'Include Letters'
+        BoxLayout:
+            orientation: 'horizontal'
+            CheckBox:
+                id: numbers
+                active: True
+            Label:
+                text: 'Include Numbers'
+        BoxLayout:
+            orientation: 'horizontal'
+            CheckBox:
+                id: symbols
+                active: True
+            Label:
+                text: 'Include Symbols'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: '50dp'
+            spacing: '8dp'
+            padding: ('18dp','8dp','18dp','8dp')
+
+            Label:
+                text: 'Length Password: (recommended 12-16)'
+                # size_hint_x: None
+                width: '80dp'
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                id: length_input
+                text: '16'
+                input_filter: 'int'
+                multiline: False
+                size_hint_x: None
+                width: '50dp'
+    Label:
+        text:'Password Generator'
+        font_size:32
+        
+    Label:
+        id: password_label
+        text:'Your password will appear here'
+        font_size:24
+        text_size: self.width, None  # Enable text wrapping at label width
+        size_hint_y: None  # Allow height to adjust based on content
+        height: self.texture_size[1]  # Set height to match wrapped content
+        halign: 'center'  # Center text horizontally
+        padding: [10, 10]  # Add some padding around text
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: '48dp'
+        spacing: '8dp'
+        padding: ('18dp','8dp','18dp','8dp')
+
+        Button:
+            text: 'Generate Password'
+            font_size:24
+            on_press: password_label.text = root.generate_password(length_input.text)
+
+        Button:
+            id: copy_btn
+            text: 'Copy'
+            font_size: 18
+            size_hint_x: None
+            width: '120dp'
+            on_press: root.copy_password(password_label.text, self)

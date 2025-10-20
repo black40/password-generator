@@ -1,0 +1,23 @@
+[project]
+name = "passw-generator"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "kivy>=2.3.1",
+    "ruff>=0.14.1",
+]
+[tool.ruff]
+line-length = 88
+exclude = ["__pycache__", ".venv", "build", "dist"]
+fix = true
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"] # E: pycodestyle, F: pyflakes, I: isort, B: bugbear
+ignore = []
+per-file-ignores = { "app/gui.py" = ["E402"] }
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "tab"
