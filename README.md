@@ -13,8 +13,8 @@
 ## Установка
 1. Клонируйте репозиторий:
    ```bash
-   git clone <repo-url>
-   cd passw_generator
+   git clone https://github.com/black40/password-generator.git
+   cd password-generator
    ```
 2. Создайте виртуальное окружение и установите зависимости:
    ```bash
@@ -66,4 +66,4 @@ make format
 
 ---
 
-**Автор:** <ваше имя>
+**Автор:** black40
